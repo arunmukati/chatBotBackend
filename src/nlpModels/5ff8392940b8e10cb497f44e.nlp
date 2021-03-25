@@ -1,0 +1,195 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "forceNER": true,
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "greet": {
+            "intent": "605ceed205ff7320e42acb77",
+            "domain": "default"
+          },
+          "hi": {
+            "intent": "605ceed205ff7320e42acb77",
+            "domain": "default"
+          },
+          "hello": {
+            "intent": "605ceed205ff7320e42acb77",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "605ceed205ff7320e42acb77": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "greet",
+            "intent": "605ceed205ff7320e42acb77"
+          },
+          {
+            "domain": "default",
+            "utterance": "hi",
+            "intent": "605ceed205ff7320e42acb77"
+          },
+          {
+            "domain": "default",
+            "utterance": "hello",
+            "intent": "605ceed205ff7320e42acb77"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "greet": 1,
+              "hi": 1,
+              "hello": 1
+            },
+            "intents": {
+              "605ceed205ff7320e42acb77": 1
+            },
+            "intentFeatures": {
+              "605ceed205ff7320e42acb77": {
+                "greet": 1,
+                "hi": 1,
+                "hello": 1
+              }
+            },
+            "featuresToIntent": {
+              "greet": [
+                "605ceed205ff7320e42acb77"
+              ],
+              "hi": [
+                "605ceed205ff7320e42acb77"
+              ],
+              "hello": [
+                "605ceed205ff7320e42acb77"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "greet",
+                "hi",
+                "hello"
+              ],
+              "intents": [
+                "605ceed205ff7320e42acb77"
+              ],
+              "perceptrons": [
+                [
+                  5.623373985290527,
+                  5.742938041687012,
+                  5.6846818923950195,
+                  8.53914163021994
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "greet"
+      ],
+      [
+        "en",
+        "hi"
+      ],
+      [
+        "en",
+        "hello"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "en": {
+        "605ceed205ff7320e42acb77": [
+          {
+            "answer": {
+              "_id": "604a2cfefc3bf93d24f6f05d",
+              "name": "c flow text",
+              "flowId": "",
+              "buttons": [],
+              "userId": "5ff8392940b8e10cb497f44e",
+              "text": "HI this is from bot",
+              "__v": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}

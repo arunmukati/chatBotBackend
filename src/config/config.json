@@ -1,0 +1,12 @@
+{
+    "database": {
+        "botTest": {
+            "username": "root",
+            "password": "",
+            "database": "bot_backend",
+            "host": "localhost",
+            "dialect": "mysql"
+        }
+    }
+   
+}
