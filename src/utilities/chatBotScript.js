@@ -299,8 +299,8 @@ let chatBody = document.getElementById('chatBody');
 let ioScript = document.getElementById('ioscript');
 let typingTag = document.getElementById('typing');
 let typingText = `<div class="i-message" >
-<img src="bot.png" alt="">
-<p><img src="typing.gif" alt=""></p>
+<img src="${baseURL}images/bot.png" alt="">
+<p><img src="${baseURL}images/typing.gif" alt=""></p>
 </div>`
 // let wraper = document.getElementById('wrapper');
 // ioScript.src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js";
