@@ -34,7 +34,11 @@ app.use('/images', express.static(__dirname + '/src/images'));
 app.get('/chatBotScript.js', function (request, response) {
   response.sendFile('./src/utilities/chatBotScript.js', { root: __dirname });
 });
-app.use('/',express.static(__dirname + '/public/chatbot'))
+app.use(express.static(__dirname + '/public/chatbot'))
+app.route('/*').get(function(req, res) { 
+  return res.sendFile(path.join(__dirname + '/public/chatbot', 'index.html')); 
+});
+// app.get('*.*',express.static(__dirname + '/public/chatbot/index.html'))
 // app.use('/', (req,res,next)=>{
 //   res.send("Hello")
 // });
