@@ -60,6 +60,9 @@ chatwrapper.innerHTML = ` <!-- hidden -->
            <p><img src="${baseURL}images/typing.gif" alt=""></p>
        </div> -->
 </div>
+<div id="typing">
+    
+</div>
 <div class="footer">
     <div class="text-div">
     <input type="text" placeholder="Type Here..." name="" id="sendText" >
@@ -97,6 +100,9 @@ styleEle.innerHTML= `
       width: 100%;
       position: relative;
   }
+  #typing{
+    padding:0 10px;
+}
   .chat-oc{
       position: fixed;
       bottom: 80px;
@@ -291,6 +297,11 @@ let chatWrap = document.getElementById('chat-wrap');
 let sendText = document.getElementById("sendText");
 let chatBody = document.getElementById('chatBody');
 let ioScript = document.getElementById('ioscript');
+let typingTag = document.getElementById('typing');
+let typingText = `<div class="i-message" >
+<img src="bot.png" alt="">
+<p><img src="typing.gif" alt=""></p>
+</div>`
 // let wraper = document.getElementById('wrapper');
 // ioScript.src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js";
 // wraper.prepend(ioScript);
@@ -332,9 +343,13 @@ function initSocket(){
         // alert('loaded');
         // socket.emit('message', 'from frontend');
         socket.on("message", (msg) => {
+            typingTag.innerHTML='';
             console.log("message",msg);
             textRecieved(msg.text)
-        })
+        });
+        socket.on("typing",()=>{
+            typingTag.innerHTML = typingText;
+        });
     });
 }
 catch(err){

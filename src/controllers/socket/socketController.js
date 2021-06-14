@@ -14,6 +14,8 @@ module.exports = function (io) {
                 io.to('agent-'+ msg.userId).emit('message',{fromUser: true,agentTakeover:data.data.agentTakeover, ...msg});
             }
             if(!data.data.agentTakeover){
+                io.to('user-'+ msg.userChatId).emit('typing','');
+
               await  TrainigController.getMessage({userId: msg.userId,text:msg.text}).then(botresponse=>{
                   let text = "Sorry,I didn't understand this!"
                   if(botresponse.answer){
