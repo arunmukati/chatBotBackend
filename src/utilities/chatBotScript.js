@@ -1,5 +1,5 @@
-let baseURL = 'http://localhost:3001/';
-// baseURL  = 'https://chat-bot-backend-arun.herokuapp.com/'
+// let baseURL = 'http://localhost:3001/';
+baseURL  = 'https://chat-bot-backend-arun.herokuapp.com/'
 //sghdsagiudsau
 let BL_body;
 let BL_head;
