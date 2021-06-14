@@ -113,6 +113,7 @@ styleEle.innerHTML= `
       background-color: #181887;
       box-shadow: 0px 0 13px #2b2b2b;
    padding: 15px;
+   z-index: 99999999;
    
   }
   .chat-oc img{
@@ -135,6 +136,7 @@ styleEle.innerHTML= `
       position: fixed;
       bottom: 150px;
       background: white;
+      z-index: 99999999;
   right: 30px;
   border-radius: 10px;
       box-shadow: 0 0 16px #18188757;
