@@ -26,7 +26,9 @@ router.get('/msg',apiMiddleware.authUser,TrainController.getMessage);
 
 //routes for user side chats
 router.get('/messages/:id',ChatController.getChats);
-router.get('/allUser',apiMiddleware.authUser,ChatController.getAllUsers)
+router.get('/allUser',apiMiddleware.authUser,ChatController.getAllUsers);
+
+router.get('/profile',apiMiddleware.authUser, UserController.profile);
 
 
 

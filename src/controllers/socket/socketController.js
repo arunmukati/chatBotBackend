@@ -9,9 +9,9 @@ module.exports = function (io) {
         socket.on('message', async (msg) => {
          await ChatController.textRecieved(msg).then(async data=>{
             if(data.name){
-                io.to('agent-'+ msg.userId).emit('message',{fromUser: true, ...msg,name: data.name,data:data.data});
+                io.to('agent-'+ msg.userId).emit('message',{fromUser: true,agentTakeover: data.data.agentTakeover, ...msg,name: data.name,data:data.data});
             }else{
-                io.to('agent-'+ msg.userId).emit('message',{fromUser: true, ...msg});
+                io.to('agent-'+ msg.userId).emit('message',{fromUser: true,agentTakeover:data.data.agentTakeover, ...msg});
             }
             if(!data.data.agentTakeover){
               await  TrainigController.getMessage({userId: msg.userId,text:msg.text}).then(botresponse=>{
@@ -20,9 +20,10 @@ module.exports = function (io) {
                     text = botresponse.answer.text;
                   }
                   let msgTosend = {text:text, timestamp: new Date().getTime(), userId: msg.userId,userChatId:msg.userChatId};
+                  console.log(msg.userChatId);
                  io.to('user-'+ msg.userChatId).emit('message',msgTosend);
                  ChatController.textSend(msgTosend);
-                 io.to('agent-'+ msg.userId).emit('message',{fromUser: false, ...msg});
+                 io.to('agent-'+ msg.userId).emit('message',{fromUser: false, ...msgTosend});
               })
             }
          });

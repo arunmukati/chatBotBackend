@@ -15,7 +15,7 @@ const ApiMiddleware = {
                 res.status(401).send({ message: 'UnAuthorised' });
             }
             else{
-                // console.log()
+                console.log("haha",api)
                 req.userId = decoded.id;
                next();
             }

@@ -42,9 +42,9 @@ const UserController = {
             lastname: Joi.string().required(),
             mobile: Joi.number().required(),
             email: Joi.string(),
-            dob: Joi.string().required(),
-            gender: Joi.string().valid('M', 'F').required(),
-            address: Joi.string().required(),
+            // dob: Joi.string().required(),
+            // gender: Joi.string().valid('M', 'F').required(),
+            // address: Joi.string().required(),
             password: Joi.string().required()
             // classroom_id: Joi.string().required(),
         }).unknown(true);
@@ -66,9 +66,9 @@ const UserController = {
             lastname: body.lastname,
             mobile: body.mobile,
             email: body.email,
-            dob: body.dob,
-            gender: body.gender,
-            address: body.address,
+            // dob: body.dob,
+            // gender: body.gender,
+            // address: body.address,
             password: await hashPassword(body.password)
         }).then(() => {
             delete body['password'];
@@ -82,7 +82,7 @@ const UserController = {
     login: (req, res, next) => {
         let body = req.body;
         const object = Joi.object().keys({
-            mobile: Joi.number().required(),
+            email: Joi.string().required(),
             password: Joi.string().required()
             // classroom_id: Joi.string().required(),
         }).unknown(true);
@@ -90,7 +90,7 @@ const UserController = {
         if (result.error) {
             return next(result.error);
         }
-        userModel.findOne({'mobile' : body.mobile}).then(user=>{
+        userModel.findOne({'email' : body.email}).then(user=>{
             if(!user){
                 return next("Invalid User");
             }
@@ -131,6 +131,16 @@ const UserController = {
 
         })
 
+    },
+    profile: (req, res, next)=>{
+        console.log("hs",req.userId)
+        userModel.findOne({'_id' : req.userId}).then(user=>{
+          user['password'] = null;
+            res.send({
+                data:user,
+                userId: user['_id']
+            })
+        })
     }
 }
 module.exports = UserController;

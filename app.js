@@ -30,9 +30,15 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api',apiRoutes);
 app.use('/auth', apiAuthRoutes);
-app.use('/', (req,res,next)=>{
-  res.send("Hello")
-})
+app.use('/images', express.static(__dirname + '/src/images'));
+app.get('/chatBotScript.js', function (request, response) {
+  response.sendFile('./src/utilities/chatBotScript.js', { root: __dirname });
+});
+app.use('/',express.static(__dirname + '/public/chatbot'))
+// app.use('/', (req,res,next)=>{
+//   res.send("Hello")
+// });
+
 
 // app.use('/',routes);
 // app.get('*.*', express.static(path.join(__dirname, '/../client/build/bundle.js')));
